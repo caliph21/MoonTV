@@ -78,7 +78,7 @@ function LoginPageClient() {
   const [enableRegister, setEnableRegister] = useState(false);
   const { siteName } = useSite();
 
-  // 在客户端挂载后设置配置
+  // 在客户端挂载后设置配置 + 加载 Turnstile 脚本
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const storageType = (window as any).RUNTIME_CONFIG?.STORAGE_TYPE;
@@ -86,6 +86,13 @@ function LoginPageClient() {
       setEnableRegister(
         Boolean((window as any).RUNTIME_CONFIG?.ENABLE_REGISTER)
       );
+
+      // 加载 Turnstile 脚本
+      const script = document.createElement('script');
+      script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js';
+      script.async = true;
+      script.defer = true;
+      document.body.appendChild(script);
     }
   }, []);
 
@@ -95,6 +102,13 @@ function LoginPageClient() {
 
     if (!password || (shouldAskUsername && !username)) return;
 
+    // 获取 Turnstile token
+    const token = (document.querySelector('[name="cf-turnstile-response"]') as HTMLInputElement)?.value;
+    if (!token) {
+      setError('请完成人机验证');
+      return;
+    }
+
     try {
       setLoading(true);
       const res = await fetch('/api/login', {
@@ -103,6 +117,7 @@ function LoginPageClient() {
         body: JSON.stringify({
           password,
           ...(shouldAskUsername ? { username } : {}),
+          turnstileToken: token, // 添加 token 到请求
         }),
       });
 
@@ -111,12 +126,16 @@ function LoginPageClient() {
         router.replace(redirect);
       } else if (res.status === 401) {
         setError('密码错误');
+        // 刷新 Turnstile
+        (window as any).turnstile?.reset();
       } else {
         const data = await res.json().catch(() => ({}));
         setError(data.error ?? '服务器错误');
+        (window as any).turnstile?.reset();
       }
     } catch (error) {
       setError('网络错误，请稍后重试');
+      (window as any).turnstile?.reset();
     } finally {
       setLoading(false);
     }
@@ -127,12 +146,23 @@ function LoginPageClient() {
     setError(null);
     if (!password || !username) return;
 
+    // 注册也需要验证
+    const token = (document.querySelector('[name="cf-turnstile-response"]') as HTMLInputElement)?.value;
+    if (!token) {
+      setError('请完成人机验证');
+      return;
+    }
+
     try {
       setLoading(true);
       const res = await fetch('/api/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password }),
+        body: JSON.stringify({ 
+          username, 
+          password,
+          turnstileToken: token // 添加 token 到请求
+        }),
       });
 
       if (res.ok) {
@@ -141,9 +171,11 @@ function LoginPageClient() {
       } else {
         const data = await res.json().catch(() => ({}));
         setError(data.error ?? '服务器错误');
+        (window as any).turnstile?.reset();
       }
     } catch (error) {
       setError('网络错误，请稍后重试');
+      (window as any).turnstile?.reset();
     } finally {
       setLoading(false);
     }
@@ -190,6 +222,13 @@ function LoginPageClient() {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
+
+          {/* Turnstile 验证组件 */}
+          <div 
+            className="cf-turnstile" 
+            data-sitekey="0x4AAAAAACpqryYXHwgPdL3x"
+            data-theme="light"
+          ></div>
 
           {error && (
             <p className='text-sm text-red-600 dark:text-red-400'>{error}</p>
