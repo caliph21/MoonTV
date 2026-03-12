@@ -15,6 +15,36 @@ const STORAGE_TYPE =
     | 'upstash'
     | undefined) || 'localstorage';
 
+// Turnstile 验证函数
+async function verifyTurnstileToken(token: string, ip?: string | null): Promise<boolean> {
+  const secretKey = process.env.TURNSTILE_SECRET_KEY;
+  
+  if (!secretKey) {
+    console.error('TURNSTILE_SECRET_KEY not set');
+    // 如果没有配置密钥，为了不阻塞用户，暂时放行
+    // 生产环境建议设为 false 强制验证
+    return true;
+  }
+
+  const formData = new FormData();
+  formData.append('secret', secretKey);
+  formData.append('response', token);
+  if (ip) formData.append('remoteip', ip);
+
+  try {
+    const res = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+      method: 'POST',
+      body: formData
+    });
+    
+    const data = await res.json();
+    return data.success === true;
+  } catch (error) {
+    console.error('Turnstile verification failed:', error);
+    return false;
+  }
+}
+
 // 生成签名
 async function generateSignature(
   data: string,
@@ -69,6 +99,28 @@ async function generateAuthCookie(
 
 export async function POST(req: NextRequest) {
   try {
+    // 获取请求数据
+    const body = await req.json();
+    const { username, password, turnstileToken } = body;
+
+    // Turnstile 验证（对所有模式都生效）
+    if (!turnstileToken) {
+      return NextResponse.json(
+        { error: '请完成人机验证' },
+        { status: 400 }
+      );
+    }
+
+    const ip = req.headers.get('CF-Connecting-IP') || req.headers.get('x-forwarded-for');
+    const isValidTurnstile = await verifyTurnstileToken(turnstileToken, ip);
+
+    if (!isValidTurnstile) {
+      return NextResponse.json(
+        { error: '人机验证失败，请重试' },
+        { status: 400 }
+      );
+    }
+
     // 本地 / localStorage 模式——仅校验固定密码
     if (STORAGE_TYPE === 'localstorage') {
       const envPassword = process.env.PASSWORD;
@@ -81,15 +133,14 @@ export async function POST(req: NextRequest) {
         response.cookies.set('auth', '', {
           path: '/',
           expires: new Date(0),
-          sameSite: 'lax', // 改为 lax 以支持 PWA
-          httpOnly: false, // PWA 需要客户端可访问
-          secure: false, // 根据协议自动设置
+          sameSite: 'lax',
+          httpOnly: false,
+          secure: false,
         });
 
         return response;
       }
 
-      const { password } = await req.json();
       if (typeof password !== 'string') {
         return NextResponse.json({ error: '密码不能为空' }, { status: 400 });
       }
@@ -108,24 +159,22 @@ export async function POST(req: NextRequest) {
         password,
         'user',
         true
-      ); // localstorage 模式包含 password
+      );
       const expires = new Date();
-      expires.setDate(expires.getDate() + 7); // 7天过期
+      expires.setDate(expires.getDate() + 7);
 
       response.cookies.set('auth', cookieValue, {
         path: '/',
         expires,
-        sameSite: 'lax', // 改为 lax 以支持 PWA
-        httpOnly: false, // PWA 需要客户端可访问
-        secure: false, // 根据协议自动设置
+        sameSite: 'lax',
+        httpOnly: false,
+        secure: false,
       });
 
       return response;
     }
 
     // 数据库 / redis 模式——校验用户名并尝试连接数据库
-    const { username, password } = await req.json();
-
     if (!username || typeof username !== 'string') {
       return NextResponse.json({ error: '用户名不能为空' }, { status: 400 });
     }
@@ -145,16 +194,16 @@ export async function POST(req: NextRequest) {
         password,
         'owner',
         false
-      ); // 数据库模式不包含 password
+      );
       const expires = new Date();
-      expires.setDate(expires.getDate() + 7); // 7天过期
+      expires.setDate(expires.getDate() + 7);
 
       response.cookies.set('auth', cookieValue, {
         path: '/',
         expires,
-        sameSite: 'lax', // 改为 lax 以支持 PWA
-        httpOnly: false, // PWA 需要客户端可访问
-        secure: false, // 根据协议自动设置
+        sameSite: 'lax',
+        httpOnly: false,
+        secure: false,
       });
 
       return response;
@@ -185,16 +234,16 @@ export async function POST(req: NextRequest) {
         password,
         user?.role || 'user',
         false
-      ); // 数据库模式不包含 password
+      );
       const expires = new Date();
-      expires.setDate(expires.getDate() + 7); // 7天过期
+      expires.setDate(expires.getDate() + 7);
 
       response.cookies.set('auth', cookieValue, {
         path: '/',
         expires,
-        sameSite: 'lax', // 改为 lax 以支持 PWA
-        httpOnly: false, // PWA 需要客户端可访问
-        secure: false, // 根据协议自动设置
+        sameSite: 'lax',
+        httpOnly: false,
+        secure: false,
       });
 
       return response;
