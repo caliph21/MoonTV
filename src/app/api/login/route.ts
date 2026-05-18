@@ -15,35 +15,34 @@ const STORAGE_TYPE =
     | 'upstash'
     | undefined) || 'localstorage';
 
-// Turnstile 验证函数
-async function verifyTurnstileToken(token: string, ip?: string | null): Promise<boolean> {
-  const secretKey = process.env.TURNSTILE_SECRET_KEY;
-  
-  if (!secretKey) {
-    console.error('TURNSTILE_SECRET_KEY not set');
-    // 如果没有配置密钥，为了不阻塞用户，暂时放行
-    // 生产环境建议设为 false 强制验证
-    return true;
-  }
-
-  const formData = new FormData();
-  formData.append('secret', secretKey);
-  formData.append('response', token);
-  if (ip) formData.append('remoteip', ip);
-
-  try {
-    const res = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
-      method: 'POST',
-      body: formData
-    });
-    
-    const data = await res.json();
-    return data.success === true;
-  } catch (error) {
-    console.error('Turnstile verification failed:', error);
-    return false;
-  }
-}
+// ========== Turnstile 验证函数（已取消） ==========
+// async function verifyTurnstileToken(token: string, ip?: string | null): Promise<boolean> {
+//   const secretKey = process.env.TURNSTILE_SECRET_KEY;
+//   
+//   if (!secretKey) {
+//     console.error('TURNSTILE_SECRET_KEY not set');
+//     return true;
+//   }
+//
+//   const formData = new FormData();
+//   formData.append('secret', secretKey);
+//   formData.append('response', token);
+//   if (ip) formData.append('remoteip', ip);
+//
+//   try {
+//     const res = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+//       method: 'POST',
+//       body: formData
+//     });
+//     
+//     const data = await res.json();
+//     return data.success === true;
+//   } catch (error) {
+//     console.error('Turnstile verification failed:', error);
+//     return false;
+//   }
+// }
+// ========== Turnstile 验证函数已取消 ==========
 
 // 生成签名
 async function generateSignature(
@@ -103,23 +102,24 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     const { username, password, turnstileToken } = body;
 
-    // Turnstile 验证（对所有模式都生效）
-    if (!turnstileToken) {
-      return NextResponse.json(
-        { error: '请完成人机验证' },
-        { status: 400 }
-      );
-    }
-
-    const ip = req.headers.get('CF-Connecting-IP') || req.headers.get('x-forwarded-for');
-    const isValidTurnstile = await verifyTurnstileToken(turnstileToken, ip);
-
-    if (!isValidTurnstile) {
-      return NextResponse.json(
-        { error: '人机验证失败，请重试' },
-        { status: 400 }
-      );
-    }
+    // ========== Turnstile 验证（已取消） ==========
+    // if (!turnstileToken) {
+    //   return NextResponse.json(
+    //     { error: '请完成人机验证' },
+    //     { status: 400 }
+    //   );
+    // }
+    //
+    // const ip = req.headers.get('CF-Connecting-IP') || req.headers.get('x-forwarded-for');
+    // const isValidTurnstile = await verifyTurnstileToken(turnstileToken, ip);
+    //
+    // if (!isValidTurnstile) {
+    //   return NextResponse.json(
+    //     { error: '人机验证失败，请重试' },
+    //     { status: 400 }
+    //   );
+    // }
+    // ========== Turnstile 验证已取消 ==========
 
     // 本地 / localStorage 模式——仅校验固定密码
     if (STORAGE_TYPE === 'localstorage') {
