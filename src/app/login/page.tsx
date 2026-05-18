@@ -78,7 +78,7 @@ function LoginPageClient() {
   const [enableRegister, setEnableRegister] = useState(false);
   const { siteName } = useSite();
 
-  // 在客户端挂载后设置配置 + 加载 Turnstile 脚本
+  // 在客户端挂载后设置配置
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const storageType = (window as any).RUNTIME_CONFIG?.STORAGE_TYPE;
@@ -87,12 +87,13 @@ function LoginPageClient() {
         Boolean((window as any).RUNTIME_CONFIG?.ENABLE_REGISTER)
       );
 
-      // 加载 Turnstile 脚本
-      const script = document.createElement('script');
-      script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js';
-      script.async = true;
-      script.defer = true;
-      document.body.appendChild(script);
+      // ========== Turnstile 脚本加载（已取消） ==========
+      // const script = document.createElement('script');
+      // script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js';
+      // script.async = true;
+      // script.defer = true;
+      // document.body.appendChild(script);
+      // ========== Turnstile 脚本加载已取消 ==========
     }
   }, []);
 
@@ -102,12 +103,13 @@ function LoginPageClient() {
 
     if (!password || (shouldAskUsername && !username)) return;
 
-    // 获取 Turnstile token
-    const token = (document.querySelector('[name="cf-turnstile-response"]') as HTMLInputElement)?.value;
-    if (!token) {
-      setError('请完成人机验证');
-      return;
-    }
+    // ========== Turnstile token 获取和验证（已取消） ==========
+    // const token = (document.querySelector('[name="cf-turnstile-response"]') as HTMLInputElement)?.value;
+    // if (!token) {
+    //   setError('请完成人机验证');
+    //   return;
+    // }
+    // ========== Turnstile token 验证已取消 ==========
 
     try {
       setLoading(true);
@@ -117,7 +119,7 @@ function LoginPageClient() {
         body: JSON.stringify({
           password,
           ...(shouldAskUsername ? { username } : {}),
-          turnstileToken: token, // 添加 token 到请求
+          // turnstileToken: token, // Turnstile token 已取消
         }),
       });
 
@@ -126,16 +128,21 @@ function LoginPageClient() {
         router.replace(redirect);
       } else if (res.status === 401) {
         setError('密码错误');
-        // 刷新 Turnstile
-        (window as any).turnstile?.reset();
+        // ========== Turnstile 重置（已取消） ==========
+        // (window as any).turnstile?.reset();
+        // ========== Turnstile 重置已取消 ==========
       } else {
         const data = await res.json().catch(() => ({}));
         setError(data.error ?? '服务器错误');
-        (window as any).turnstile?.reset();
+        // ========== Turnstile 重置（已取消） ==========
+        // (window as any).turnstile?.reset();
+        // ========== Turnstile 重置已取消 ==========
       }
     } catch (error) {
       setError('网络错误，请稍后重试');
-      (window as any).turnstile?.reset();
+      // ========== Turnstile 重置（已取消） ==========
+      // (window as any).turnstile?.reset();
+      // ========== Turnstile 重置已取消 ==========
     } finally {
       setLoading(false);
     }
@@ -146,12 +153,13 @@ function LoginPageClient() {
     setError(null);
     if (!password || !username) return;
 
-    // 注册也需要验证
-    const token = (document.querySelector('[name="cf-turnstile-response"]') as HTMLInputElement)?.value;
-    if (!token) {
-      setError('请完成人机验证');
-      return;
-    }
+    // ========== 注册的 Turnstile token 获取和验证（已取消） ==========
+    // const token = (document.querySelector('[name="cf-turnstile-response"]') as HTMLInputElement)?.value;
+    // if (!token) {
+    //   setError('请完成人机验证');
+    //   return;
+    // }
+    // ========== Turnstile token 验证已取消 ==========
 
     try {
       setLoading(true);
@@ -161,7 +169,7 @@ function LoginPageClient() {
         body: JSON.stringify({ 
           username, 
           password,
-          turnstileToken: token // 添加 token 到请求
+          // turnstileToken: token // Turnstile token 已取消
         }),
       });
 
@@ -171,11 +179,15 @@ function LoginPageClient() {
       } else {
         const data = await res.json().catch(() => ({}));
         setError(data.error ?? '服务器错误');
-        (window as any).turnstile?.reset();
+        // ========== Turnstile 重置（已取消） ==========
+        // (window as any).turnstile?.reset();
+        // ========== Turnstile 重置已取消 ==========
       }
     } catch (error) {
       setError('网络错误，请稍后重试');
-      (window as any).turnstile?.reset();
+      // ========== Turnstile 重置（已取消） ==========
+      // (window as any).turnstile?.reset();
+      // ========== Turnstile 重置已取消 ==========
     } finally {
       setLoading(false);
     }
@@ -223,12 +235,13 @@ function LoginPageClient() {
             />
           </div>
 
-          {/* Turnstile 验证组件 */}
-          <div 
+          {/* ========== Turnstile 验证组件（已取消） ========== */}
+          {/* <div 
             className="cf-turnstile" 
             data-sitekey="0x4AAAAAACpqryYXHwgPdL3x"
             data-theme="light"
-          ></div>
+          ></div> */}
+          {/* ========== Turnstile 验证组件已取消 ========== */}
 
           {error && (
             <p className='text-sm text-red-600 dark:text-red-400'>{error}</p>
