@@ -1,253 +1,157 @@
 {
   "cache_time": 7200,
   "api_site": {
-    "qihuziyu": {
-        "api": "https://caiji.qhzyapi.com/api.php/provide/vod",
-        "name": "奇虎资源"
+    "dianyingtiantangziyuan": {
+      "api": "aHR0cDovL2NhaWppLmR5dHR6eWFwaS5jb20vYXBpLnBocC9wcm92aWRlL3ZvZC9hdC94bWw=",
+      "name": "🔅电影天堂资源ᴴ"
     },
-
-    "suboziyu": {
-        "api": "https://subocaiji.com/api.php/provide/vod",
-        "name": "速播资源"
+    "ziyuan": {
+      "api": "aHR0cDovL2FwaS5va3p5dy5uZXQvYXBpLnBocC9wcm92aWRlL3ZvZA==",
+      "name": "🔅OK资源ᴴ"
     },
-
-    "tikoziyuwa": {
-        "api": "https://api.tiankongapi.com/api.php/provide/vod",
-        "name": "天空资源网"
+    "chunyingtaopian": {
+      "api": "aHR0cHM6Ly90YW9waWFuYXBpLmNvbS9jamFwaS9tYzEwL3ZvZC94bWwuaHRtbA==",
+      "name": "🔅春莹淘片ᴴ"
     },
-
-    "gusuziyuwa": {
-        "api": "https://api.guangsuapi.com/api.php/provide/vod",
-        "name": "光速资源网"
+    "didiziyuan": {
+      "api": "aHR0cHM6Ly9hcGkuZGRhcGkuY2MvYXBpLnBocC9wcm92aWRlL3ZvZA==",
+      "name": "🔅滴滴资源ᴴ"
     },
-
-    "jiyiziyu": {
-        "api": "https://jyzyapi.com/provide/vod",
-        "name": "金鹰资源"
+    "yingmi": {
+      "api": "aHR0cHM6Ly93d3cuaW5taS5hcHAvYXBpLnBocC9wcm92aWRlL3ZvZA==",
+      "name": "🔅映迷ᴴ"
     },
-
-    "yayaziyu": {
-        "api": "https://cj2.yayazy.net/api.php/provide/vod/from/yym3u8",
-        "name": "鸭鸭资源"
+    "kuziyuan": {
+      "api": "aHR0cHM6Ly9hcGkudWt1YXBpODguY29tL2FwaS5waHAvcHJvdmlkZS92b2Q=",
+      "name": "🔅U酷资源ᴴ"
     },
-
-    "kuchziyu": {
-        "api": "https://caiji.kczyapi.com/api.php/provide/vod",
-        "name": "快车资源"
+    "wujinziyuanwang": {
+      "api": "aHR0cHM6Ly9hcGkud3VqaW5hcGkubWUvYXBpLnBocC9wcm92aWRlL3ZvZC9hdC94bWw=",
+      "name": "🔅无尽资源网ᴴ"
     },
-
-    "agdoma": {
-        "api": "https://ageapi.omwjhz.com/v2/search",
-        "name": "AGE动漫"
+    "haohuaziyuanwang": {
+      "api": "aHR0cHM6Ly9oaHp5YXBpLmNvbS9hcGkucGhwL3Byb3ZpZGUvdm9kL2F0L3htbA==",
+      "name": "🔅豪华资源网ᴴ"
     },
-
-    "jisuziyu": {
-        "api": "https://jszyapi.com/api.php/provide/vod",
-        "name": "极速资源"
+    "guangsuziyuanwang8": {
+      "api": "aHR0cHM6Ly9hcGkuZ3VhbmdzdWFwaS5jb20vYXBpLnBocC9wcm92aWRlL3ZvZC9hdC94bWw=",
+      "name": "🔅光速资源网8ᴴ"
     },
-
-    "shdiziyu": {
-        "api": "https://xsd.sdzyapi.com/api.php/provide/vod",
-        "name": "闪电资源"
+    "wangzheziyuan": {
+      "api": "aHR0cHM6Ly9hcGkud3N5enkubmV0L2FwaS5waHAvcHJvdmlkZS92b2Q=",
+      "name": "🔅王者资源ᴴ"
     },
-
-    "suniziyu": {
-        "api": "https://suoniapi.com/api.php/provide/vod/from/snm3u8",
-        "name": "索尼资源"
+    "wujin": {
+      "api": "aHR0cHM6Ly9hcGkud3VqaW5hcGkuY2MvYXBpLnBocC9wcm92aWRlL3ZvZA==",
+      "name": "🔅无尽CCᴴ"
     },
-
-    "36ziyu": {
-        "api": "https://360zy.com/api.php/provide/vod",
-        "name": "360资源"
+    "piaolingyingyuan": {
+      "api": "aHR0cHM6Ly9wMjEwMC5uZXQvYXBpLnBocC9wcm92aWRlL3ZvZC9hdC94bWw=",
+      "name": "🔅飘零影院ᴴ"
     },
-
-    "xilaziyu": {
-        "api": "https://api.xinlangapi.com/xinlangapi.php/provide/vod",
-        "name": "新浪资源"
+    "yunjieziyuanwang": {
+      "api": "aHR0cHM6Ly9tM3U4LmFwaXloenkuY29tL2FwaS5waHAvcHJvdmlkZS92b2QvYXQveG1s",
+      "name": "🔅云解资源网ᴴ"
     },
-
-    "huyaziyu": {
-        "api": "https://www.huyaapi.com/api.php/provide/vod",
-        "name": "虎牙资源"
+    "suoniziyuanwang": {
+      "api": "aHR0cHM6Ly9zdW9uaWFwaS5jb20vYXBpLnBocC9wcm92aWRlL3ZvZC9mcm9tL3NubTN1OC9hdC94bWw=",
+      "name": "🔅索尼资源网ᴴ"
     },
-
-    "liziziyu": {
-        "api": "https://cj.lziapi.com/api.php/provide/vod",
-        "name": "量子资源"
+    "wangwang": {
+      "api": "aHR0cHM6Ly9hcGkud3d6eS50di9hcGkucGhwL3Byb3ZpZGUvdm9k",
+      "name": "🔅旺旺APIᴴ"
     },
-
-    "hahuziyu": {
-        "api": "https://hhzyapi.com/api.php/provide/vod",
-        "name": "豪华资源"
+    "suboziyuanwang": {
+      "api": "aHR0cHM6Ly9zdWJvY2FpamkuY29tL2FwaS5waHAvcHJvdmlkZS92b2QvYXQveG1s",
+      "name": "🔅速播资源网ᴴ"
     },
-
-    "yujiziyu": {
-        "api": "https://m3u8.apiyhzy.com/api.php/provide/vod",
-        "name": "云解资源"
+    "maotaiziyuan": {
+      "api": "aHR0cHM6Ly9jYWlqaS5tYW90YWl6eS5jYy9hcGkucGhwL3Byb3ZpZGUvdm9kL2F0L3htbA==",
+      "name": "🔅茅台资源ᴴ"
     },
-
-    "woloziyu": {
-        "api": "https://collect.wolongzyw.com/api.php/provide/vod",        "name": "卧龙资源"
+    "hongniu": {
+      "api": "aHR0cHM6Ly9ob25nbml1enkyLmNvbS9hcGkucGhwL3Byb3ZpZGUvdm9k",
+      "name": "🔅红牛ᴴ"
     },
-
-    "hemuerziyu": {
-        "api": "https://xml02.heimuer.xyz/api.php/provide/vod",
-        "name": "黑木耳资源"
+    "liangziziyuanwang": {
+      "api": "aHR0cHM6Ly9jai5semlhcGkuY29tL2FwaS5waHAvcHJvdmlkZS92b2QvYXQveG1s",
+      "name": "🔅量子资源网ᴴ"
     },
-
-    "wujiziyu": {
-        "api": "https://api.wujinapi.me/api.php/provide/vod",
-        "name": "无尽资源"
+    "jinyingziyuanwang": {
+      "api": "aHR0cHM6Ly9qeXp5YXBpLmNvbS9wcm92aWRlL3ZvZC9hdC94bWxzZWE=",
+      "name": "🔅金鹰资源网ᴴ"
     },
-
-    "tapiziyu": {
-        "api": "https://taopianapi.com/cjapi/mc/vod/xml",
-        "name": "淘片资源"
+    "tianyahaijiao": {
+      "api": "aHR0cHM6Ly90eXlzenlhcGkuY29tL2FwaS5waHAvcHJvdmlkZS92b2Q=",
+      "name": "🔅天涯海角ᴴ"
     },
-
-    "bajiziyu": {
-        "api": "http://cj.bajiecaiji.com/inc/seacmsapi.php",
-        "name": "八戒资源"
+    "maoyanziyuanwang": {
+      "api": "aHR0cHM6Ly9hcGkubWFveWFuYXBpLnRvcC9hcGkucGhwL3Byb3ZpZGUvdm9k",
+      "name": "🔅猫眼资源网ᴴ"
     },
-
-    "sijiziyu": {
-        "api": "https://49zyw.com/api.php/provide/vod",
-        "name": "四九资源"
+    "modouziyuan": {
+      "api": "aHR0cHM6Ly93d3cubWR6eWFwaS5jb20vYXBpLnBocC9wcm92aWRlL3ZvZA==",
+      "name": "🔅魔都资源ᴴ"
     },
-
-    "hwzi": {
-        "api": "https://huawei8.live/api.php/provide/vod",
-        "name": "HW8资"
+    "doubanziyuan": {
+      "api": "aHR0cHM6Ly9kYnp5LnR2L2FwaS5waHAvcHJvdmlkZS92b2QvYXQveG1s",
+      "name": "🔅豆瓣资源ᴴ"
     },
-
-    "bafeziyu": {
-        "api": "https://bfzyapi.com/api.php/provide/vod",
-        "name": "暴风资源"
+    "tianyaziyuan": {
+      "api": "aHR0cHM6Ly90eXlzenkuY29tL2FwaS5waHAvcHJvdmlkZS92b2Q=",
+      "name": "🔅天涯资源ᴴ"
     },
-
-    "zudaziyu": {
-        "api": "https://api.zuidapi.com/api.php/provide/vod",
-        "name": "最大资源"
+    "yinghuaziyuan": {
+      "api": "aHR0cHM6Ly95aHp5LmNjL2FwaS5waHAvcHJvdmlkZS92b2QvYXQveG1s",
+      "name": "🔅樱花资源ᴴ"
     },
-
-    "ukuziyu": {
-        "api": "https://api.ukuapi.com/api.php/provide/vod",
-        "name": "U酷资源"
+    "youzhiziyuanwang": {
+      "api": "aHR0cHM6Ly9hcGkueXp6eS1hcGkuY29tL2luYy9hcGlfbWFjMTBfYWxsLnBocA==",
+      "name": "🔅优质资源网ᴴ"
     },
-
-    "mododo": {
-        "api": "https://caiji.moduapi.cc/api.php/provide/vod",
-        "name": "魔都动"
+    "jisuziyuanwang": {
+      "api": "aHR0cHM6Ly9qc3p5YXBpLmNvbS9hcGkucGhwL3Byb3ZpZGUvdm9kL2F0L3htbA==",
+      "name": "🔅极速资源网ᴴ"
     },
-
-    "ikziyu": {
-        "api": "https://www.ikunzy.com/api.php/seaxml/vod",
-        "name": "IKun资源"
+    "zuidaziyuanwang": {
+      "api": "aHR0cHM6Ly9hcGkuenVpZGFwaS5jb20vYXBpLnBocC9wcm92aWRlL3ZvZC9hdC94bWw=",
+      "name": "🔅最大资源网ᴴ"
     },
-
-    "honiziyu": {
-        "api": "https://www.hongniuzy3.com/api.php/provide/vod",
-        "name": "红牛资源"
+    "huyaziyuanwang": {
+      "api": "aHR0cHM6Ly93d3cuaHV5YWFwaS5jb20vYXBpLnBocC9wcm92aWRlL3ZvZC9hdC94bWw=",
+      "name": "🔅虎牙资源网ᴴ"
     },
-
-    "tvkuyish": {
-        "api": "https://www.tvkuys.xyz/api.php/app",
-        "name": "TV酷影视"
+    "hongniuziyuanwang": {
+      "api": "aHR0cHM6Ly93d3cuaG9uZ25pdXp5My5jb20vYXBpLnBocC9wcm92aWRlL3ZvZC9hdC94bWw=",
+      "name": "🔅红牛资源网ᴴ"
     },
-
-    "piliyiyu": {
-        "api": "https://p2100.net/api.php/provide/vod",
-        "name": "飘零影院"
+    "taopianziyuan": {
+      "api": "aHR0cHM6Ly93d3cudGFvcGlhbnp5LmNvbS9jamFwaS9tYzEwL3ZvZC9qc29uLmh0bWw=",
+      "name": "🔅淘片资源ᴴ"
     },
-
-    "duyoyish": {
-        "api": "https://shangjihuoke.com/api.php/tv.vod",
-        "name": "段友影视"
+    "wangwangduanju": {
+      "api": "aHR0cHM6Ly93d3p5LnR2L2FwaS5waHAvcHJvdmlkZS92b2QvYXQveG1s",
+      "name": "🔅汪汪短剧ᴴ"
     },
-
-    "yituziyu": {
-        "api": "https://cj.vodimg.top/api.php/provide/vod",
-        "name": "影图资源"
+    "wujinziyuan": {
+      "api": "aHR0cHM6Ly9hcGkud3VqaW5hcGkuY29tL2FwaS5waHAvcHJvdmlkZS92b2Q=",
+      "name": "🔅无尽资源ᴴ"
     },
-
-    "yihuziyu": {
-        "api": "https://yhzy.cc/api.php/provide/vod",
-        "name": "樱花资源"
+    "niuniuziyuan": {
+      "api": "aHR0cHM6Ly9hcGkubml1bml1enkubWUvYXBpLnBocC9wcm92aWRlL3ZvZC9mcm9tL25ubTN1OC9hdC94bWw=",
+      "name": "🔅牛牛资源ᴴ"
     },
-
-    "piguziyu": {
-        "api": "https://pg.fenwe078.cf/api.php/provide/vod",
-        "name": "苹果资源"
+    "modoudongman": {
+      "api": "aHR0cHM6Ly9jYWlqaS5tb2R1YXBpLmNjL2FwaS5waHAvcHJvdmlkZS92b2QvYXQveG1s",
+      "name": "🔅魔都动漫ᴴ"
     },
-
-    "tkziyu": {
-        "api": "https://m3u8.tiankongapi.com/api.php/provide/vod",
-        "name": "TK资源"
+    "wujin_1": {
+      "api": "aHR0cHM6Ly9hcGkud3VqaW5hcGkubmV0L2FwaS5waHAvcHJvdmlkZS92b2Q=",
+      "name": "🔅无尽ᴴ"
     },
-
-    "huwebayish": {
-        "api": "https://cjhwba.com/api.php/provide/vod",
-        "name": "华为吧影视"
-    },
-
-    "muerziyu": {
-        "api": "https://json02.heimuer.xyz/api.php/provide/vod",
-        "name": "木耳资源"
-    },
-
-    "chyitapi": {
-        "api": "https://taopianapi.com/cjapi/mc10/vod/xml.html",
-        "name": "春莹淘片"
-    },
-
-    "niniziyu": {
-        "api": "https://api.niuniuzy.me/api.php/provide/vod/from/nnm3u8",
-        "name": "牛牛资源"
-    },
-
-    "diyititaziyu": {
-        "api": "http://caiji.dyttzyapi.com/api.php/provide/vod",
-        "name": "电影天堂资源"
-    },
-
-    "ruyiziyu": {
-        "api": "https://cj.rycjapi.com/api.php/provide/vod",
-        "name": "如意资源"
-    },
-
-    "tiyaziyu": {
-        "api": "https://tyyszy.com/api.php/provide/vod",
-        "name": "天涯资源"
-    },
-
-    "fefayish": {
-        "api": "http://ffzy5.tv/api.php/provide/vod",
-        "name": "非凡影视"
-    },
-
-    "iqziyu": {
-        "api": "https://www.iqiyizyapi.com/api.php/provide/vod",
-        "name": "iqiyi资源"
-    },
-
-    "dobaziyu": {
-        "api": "https://dbzy.tv/api.php/provide/vod",
-        "name": "豆瓣资源"
-    },
-
-    "mozhziyu": {
-        "api": "https://mozhuazy.com/api.php/provide/vod",
-        "name": "魔爪资源"
-    },
-
-    "baduyuziyu": {
-        "api": "https://api.apibdzy.com/api.php/provide/vod",
-        "name": "百度云资源"
-    },
-
-    "wawaduju": {
-        "api": "https://wwzy.tv/api.php/provide/vod",
-        "name": "旺旺短剧"
+    "baofengziyuanwang": {
+      "api": "aHR0cHM6Ly9iZnp5YXBpLmNvbS9hcGkucGhwL3Byb3ZpZGUvdm9kL2F0L3htbA==",
+      "name": "🔅暴风资源网ᴴ"
     }
   }
 }
